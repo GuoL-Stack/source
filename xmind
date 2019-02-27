@@ -1,0 +1,59 @@
+导图
+	java 基础
+		java 关键字
+		java 运算符
+		基本数据类型
+		复杂数据类型
+			面向对象概念（抽象，继承，封装，多态）
+			子主题 2
+		IO流
+		数据库底层操作（JDBC）
+		多线程编程
+			同步、睡眠、锁
+		网络编程
+			7层网络模型、TCP/IP、UDP、HTTP、HTTPS
+			HTTP协议：
+		子主题 10
+		23种设计模式
+			常用：工厂模式系列、单例模式（枚举）
+	java进阶（JDK源码阅读）
+		String 源码分析
+			关键字：scan（跳出循环）、native（调用JVM接口）
+			底层思想：字符数组
+		StringBuffer 与 StringBuilder
+		HashSet 源码分析
+			关键字：transient（短暂引用）
+			底层思想：暂时引用 无 value 的 HashMap。
+		数组集合：
+			ArrayList：
+			Vector
+		LinkList
+		HashMap
+	数据库基础
+		数据库类型：关系型数据库、非关系型数据库、对象型数据库
+		子主题 2
+		子主题 3
+		子主题 4
+	java web
+		web.xml 中配置 的 Servlect filter ，以及 之后版本不用web.xml配置全部 使用注解
+		jsp
+		HttpRequest  HttpResponse
+		请求状态保存：cookie session 重写URL hidden表单；以及多平台  单点登录，session 保存等
+	数据库 访问框架
+		MyBatis 
+		Hibernate
+	Spring
+		Web项目中基本使用：上下文xml 路径 配置到 web.xml中，将 Spring 上下文 注册进web 上下文中。（多数据源配置）
+		Spring 源码阅读
+			对Springcontext 文件 的解析，与bean的注册，以及生产对应的 上下文
+			Spring 对 MyBatis 与 Hibernate 等 访问层的封装 管理
+			
+		Spring 与 Spring MVC   、 Status2
+		Srping JPA 规范与实现
+	web中并发处理 与 数据安全
+		缓存层：保护数据库  与 热点数据
+		消峰处理：请求队列化（消息队列）
+		对数据库的扩展：读写分离（主从） 分表 。。。
+		连接池
+	SpringBoot
+	Spring cloud
