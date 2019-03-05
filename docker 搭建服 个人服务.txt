@@ -1,0 +1,10 @@
+MySQL 5.7 m/s
+
+gitlab 
+
+postgresql
+
+Portainer 或者其他 镜像管理
+
+Nexus 看情况搭建
+
