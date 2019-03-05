@@ -8,3 +8,7 @@ Portainer 或者其他 镜像管理
 
 Nexus 看情况搭建
 
+以后搭建：
+Redis
+
+Apache nginx
