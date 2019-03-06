@@ -1,6 +1,7 @@
 MySQL 5.7 m/s
 
-gitlab 
+gitlab 中文Docker容器部署 
+https://gitlab.com/dwenb-gitlab/omnibus-gitlab/blob/master/doc-cn/docker/README.md
 
 postgresql
 
