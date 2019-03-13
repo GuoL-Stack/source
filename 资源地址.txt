@@ -131,9 +131,15 @@ https://netty.io/
 三大开源web 容器 服务器 ： Tomcat JBoss jetty
 JBoss
 https://developer.jboss.org/welcome
+EJB
+https://blog.csdn.net/jojo52013145/article/details/5783677
+https://www.zhihu.com/question/50665320
 
 jetty
 https://www.eclipse.org/jetty/
+
+netty
+http://ifeve.com/netty-2-6/
 
 数据库中间件
 目前国内用的最多的中间件就是sharding-jdbc，mycat，
