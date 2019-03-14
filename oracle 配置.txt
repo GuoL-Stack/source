@@ -1,0 +1,17 @@
+安装
+https://www.2cto.com/database/201701/588135.html
+
+oracle 创建用户 与配置 权限（配置权限有误）有误）https://www.cnblogs.com/buxingzhelyd/p/7865194.html
+
+配置权限 修改 修改 http://blog.itpub.net/26980368/viewspace-1253462/
+
+修改用户密码 密码 https://www.cnblogs.com/xujiating/p/6337511.html
+
+oracle 还原 数据库 据库 
+https://www.cnblogs.com/wangsaiming/p/3571791.html
+https://blog.csdn.net/qq2523208472/article/details/79937880
+
+创建 表空间  （用户 必须 要配置 表空间 才能设置对应的数据）数据）https://www.cnblogs.com/netsql/articles/1745978.html
+
+工具包
+http://tool.zhengxianjun.com/hash
