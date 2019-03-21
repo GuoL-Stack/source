@@ -21,10 +21,10 @@ public class ExpireCache<K, E> implements CacheI<K, E> {
 	private static final <K, V> Cache<K, V> newCache(final long duration, final TimeUnit unit) {
 		final Cache<K, V> cache = CacheBuilder.newBuilder().expireAfterAccess(duration, unit).expireAfterWrite(duration, unit).build();
 		// expireAfterAccess(long,
-		// TimeUnit)���������ڸ���ʱ����û�б���/д���ʣ�����ա���ע�����ֻ���Ļ���˳��ͻ��ڴ�С����һ����
+		// TimeUnit)：缓存项在给定时间内没有被读/写访问，则回收。请注意这种缓存的回收顺序和基于大小回收一样。
 
 		// expireAfterWrite(long,
-		// TimeUnit)���������ڸ���ʱ����û�б�д���ʣ������򸲸ǣ�������ա������Ϊ�������������ڹ̶�ʱ����ó¾ɲ����ã����ֻ��շ�ʽ�ǿ�ȡ�ġ������������ۣ���ʱ���������Ե���д������ִ�У�ż���ڶ�������ִ�С�
+		// TimeUnit)：缓存项在给定时间内没有被写访问（创建或覆盖），则回收。如果认为缓存数据总是在固定时候后变得陈旧不可用，这种回收方式是可取的。如下文所讨论，定时回收周期性地在写操作中执行，偶尔在读操作中执行。
 		return cache;
 	}
 
