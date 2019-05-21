@@ -84,6 +84,7 @@ https://haoji.me/
 
 模板引擎 freemarker
 http://www.51gjie.com/javaweb/123
+http://freemarker.foofun.cn/dgui.html
 
 模板引擎 Velocity
 http://www.51gjie.com/javaweb/126
@@ -165,3 +166,11 @@ https://www.cgzixue.cn/content-8504-1-1.html?_dsign=85fcbebf
      
 Windows 使用 Ubuntu
 https://blog.csdn.net/dbitc/article/details/71785418
+
+webmagic Java 爬虫框架
+http://webmagic.io/docs/zh/posts/ch1-overview/
+
+ETL
+http://bigdata.51cto.com/art/201702/530998.htm
+
+https://www.bootschool.net/
