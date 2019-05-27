@@ -174,3 +174,15 @@ ETL
 http://bigdata.51cto.com/art/201702/530998.htm
 
 https://www.bootschool.net/
+
+mint 资源
+http://ftp.heanet.ie/mirrors/linuxmint.com/stable/19.1/
+
+SpringMVC 集成 JWT验证方式
+https://www.cnblogs.com/ifindu-san/p/9890879.html
+
+Shiro禁用Session，使用SSM+JWT+Shiro进行无状态RESTful API
+https://blog.csdn.net/weixin_42058600/article/details/81837056
+
+示例 https
+https://www.cnblogs.com/ghq120/p/9063664.html
