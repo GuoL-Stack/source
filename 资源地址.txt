@@ -197,4 +197,14 @@ https://blog.csdn.net/frank_wu/article/details/49983677
 http 图解
 https://www.cnblogs.com/ranyonsue/p/5984001.html
 http 消息头 参数名称
-https://blog.csdn.net/qq_34205932/article/details/80032600
+https://www.cnblogs.com/honghong87/articles/6941436.html
+
+idea Debug
+https://www.cnblogs.com/chiangchou/p/idea-debug.html
+
+电信光猫 
+超级用户 telecomadmin nE7jA%5m
+https://www.sohu.com/a/254979117_609710
+
+移动光猫
+草鸡用户 CMCCadmin aDm8H%MdA
