@@ -178,6 +178,9 @@ https://www.bootschool.net/
 mint 资源
 http://ftp.heanet.ie/mirrors/linuxmint.com/stable/19.1/
 
+认识 JWT https://jwt.io/
+https://www.cnblogs.com/cjsblog/p/9277677.html
+
 SpringMVC 集成 JWT验证方式
 https://www.cnblogs.com/ifindu-san/p/9890879.html
 
@@ -205,6 +208,8 @@ https://www.cnblogs.com/chiangchou/p/idea-debug.html
 电信光猫 
 超级用户 telecomadmin nE7jA%5m
 https://www.sohu.com/a/254979117_609710
+https://tieba.baidu.com/p/6026039025?red_tag=1693171956
+http://www.chinadsl.net/thread-165296-1-1.html
 
 移动光猫
 草鸡用户 CMCCadmin aDm8H%MdA
