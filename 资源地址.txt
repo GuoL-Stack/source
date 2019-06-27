@@ -75,6 +75,9 @@ https://www.cnblogs.com/wangsaiming/p/3571791.html
 https://blog.csdn.net/qq2523208472/article/details/79937880
 创建 表空间  （用户 必须 要配置 表空间 才能设置对应的数据）数据）
 https://www.cnblogs.com/netsql/articles/1745978.html
+linux 安装
+https://www.cnblogs.com/startnow/p/7580865.html
+https://blog.csdn.net/sunbocong/article/details/78193187
 
 工具包
 http://tool.zhengxianjun.com/hash
