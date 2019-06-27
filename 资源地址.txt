@@ -79,6 +79,14 @@ linux 安装
 https://www.cnblogs.com/startnow/p/7580865.html
 https://blog.csdn.net/sunbocong/article/details/78193187
 
+[oracle@nstlbeta bin]$ sqlplus /nolog  //登录sqlplus
+SQL> connect /as sysdba  //连接oracle
+SQL> startup //起动数据库
+SQL> exit  //退出sqlplus ，起动监听
+[oracle@nstlbeta bin]$ cd $ORACLE_HOME/bin //进入oracle安装目录
+[oracle@nstlbeta bin]$ lsnrctl start  //起动监听
+12514 服务名称错误
+
 工具包
 http://tool.zhengxianjun.com/hash
 
