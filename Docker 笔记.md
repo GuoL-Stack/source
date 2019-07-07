@@ -1,5 +1,7 @@
 [TOC]
 
+2019年7月3日
+
 # 一、Docker 基础
 
 ## 1.1 概念
@@ -362,7 +364,7 @@ cat xxx.tar | docker import - imageName
 
 docker login 登录。
 
-使用 docker seach 搜索
+使用 docker search 搜索
 
 docker push 提交 
 
