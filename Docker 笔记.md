@@ -479,12 +479,164 @@ docker run -it
 
 ## 1.8 网络高级配置
 
+2019年7月8日
 
+安装使用 docker 时，会自动生成一个 docker0 虚拟网桥，实际上为 Linux 的一个 bridge ，可以理解为 软件交换机。
 
-# 二、docker三剑客
+同时，Docker 随机分配 一个 本地 未占用 的 私有网段 中的一个 地址 给 doker0。 例如 `172.17.0.1` 子掩码 `255.255.0.0`。所以以后启动容器的网口也会分配一个同一网段的地址 （172.17.0.1/16 子掩码 16位）
 
-## 2.1 Compose
+当创建一个 docker 容器时候，同时 会创建一对 `veth pair`接口（数据从一个进，就会从另外一个出）。一段 在容器内 即 `eth0`; 另一端 挂载到 `docker0`网桥，以 `veth`开头，这样 容器 与 主机 就实现了通讯。
 
-## 2.2 Machine
+![dcoker0-veth](.\assets\dcoker0-veth.png) 
 
-## 2.3 Docker Swarm (Swarm mode)
+### 1.8.1 配置指南
+
+docker 网络相关的配置命令（有一些需要重起 docker 服务才能生效）：
+
++ `-b BRIDGE` 或者 `--bridge=BRIDGE` 指定 容器挂载的网桥。（若指定 overlay网络 类型用于Swarm mode）（1.8.5）
++ `--bip=CIDR`定制 docker0 的掩码  （1.8.4 ）
++ `-H SOCKERT` 或 `--host=SOCKET` docker 服务接受命令的通道
++ `--icc=true|false` 是否支持容器之间通信  (1.8.2.3 )
++ `--ip-forward=true|false` 容器之间通信（影响 容器访问控制） （1.8.2.1 ）
++ `--iptables=true|false` 是否运行docker 添加 iptables (防火墙) 规则 (1.8.2.3 )
++ `--mtu=BYTES` 容器网络中的MTU （1.8.4 ）
+
+既可以在 启动 服务时 使用，又可以 在启动 容器时使用的
+
++ `--dns=IP_ADDRSS` 使用 指定的 DNS 服务器 （上一节中结束过）
++ `--dns-search=DOMAIN`指定 DNS 搜索域
+
+只能在 容器 启动时使用 即 docker run，应为是针对容器的。
+
++ `-h HOSTNAME` 或者 `--hostname=HOSTNAME`配置 容器主机名
++ `--link=CONTAINER:ALIAS` 添加到另一个容器的连接
++ `--net=bridge|none|container:NAME_or_ID|host` p配置容器的桥接模式
++ `-p SPEC` 或者 `--publish=SPEC`映射容器端口到宿主主机
++ `-P ` 或者 `--publish-all=true|false` 映射容器所以端口到宿主主机
+
+### 1.8.2 容器访问控制
+
+2019年7月9日
+
+容器的访问控制，主要通过 Linux 上的 `iptables`防火墙 来进行管理和实现。`iptables` 为大部分 Linux 默认防火墙软件
+
+#### **1.8.2.1 容器访问外部网络**
+
+容器需要访问外部网络，需要本地系统的转发支持。
+
+Linux 查询转发打开：
+
+```shell
+sysctl net.ipv4.ip_forward # ip 前往
+```
+
+如果显示为 `0` ，需要打开
+
+```shell
+sysctl -w net.ipv4.ip_forward=1 # 写入 为1
+```
+
+docker 服务启动的时候，如果设置 `--ip-forward=true`,docker 就会执行上面的语句。
+
+#### 1.8.2.2 容器之间访问
+
+需要：
+
++ 容器的网络是否已经互联。默认所有容器都被连接到 docker0 网桥上
++ 本地系统的防火墙软件是否允许。`iptablesx`
+
+不需要配置 `network` ,容器启动后 默认 在`bridge`上
+
+#### 1.8.2.3 访问所有端口
+
+启动 docker 服务时，默认添加一条转发 **策略** 到 `iptables` 的 `FORWARD`   上。策略为 `通过ACCEPT` 或者 `禁止DRPOP`。
+
+具体 通过配置 `--icc=true`（默认值）或者 `--icc=false`进行设置。
+
+或者 使用 `--iptables=false`，不添加 `iptables` 规则
+
+但是 默认情况下，不同容器之间 是允许网络互通。可以 `/etc/default/docker`文件中 配置 `DOCKER_OPTS=-icc=false`禁止。
+
+#### 1.8.2.4 访问指定端口
+
+当配置了 `DOCKER_OPTS=-icc=false`后，可以 使用 
+
+`docker run ... --link=CONTAINER_NAME:ALIAS`
+
+访问容器 的开放端口 （dockerfile 中 EXPOSE 声明的端口）。
+
+但是在之前 **1.7** 中 说的 不再推荐使用 `--link`。`--network` 能否替代？ 待测。。。
+
+```shell
+sudo iptables -nL # 查看 规则
+```
+
+如果 docker 服务启动时，`-ic=false` 端口禁止，`--iptables=true`并且 添加了防火墙规则。就可以使用 `--link` 添加新规则（`ACCEPT`），访问 开放端口。
+
+### 1.8.3 端口映射实现
+
+默认下 外部网络无法访问容器，但是容器可以访问外部网络
+
+#### 1.8.3.1 容器访问外部实现
+
+容器访问外部的连接，源地址都会被 NAT 成本地系统的 IP地址。使用 iptables 的源地址伪装，
+
+```shell
+iptables -t nat -nL # 查看地址伪装   MASQUERADE
+```
+
+### 1.8.3.2 外部访问容器实现
+
+熟悉 的 使用端口映射 `-p  -P`。
+
+还是可以通过 以上 查看 nat 表规则。
+
+使用 `-p IP:ip_port:container_port` `-P IP::container_port` 设置 指定地址才能访问。
+
+### 1.8.4 配置 docker0 网桥
+
+Docker 服务默认创建一个docker0 网桥（有一个内部接口），在内核层连通其他的物理 或者 虚拟网卡，所以 与 物理机在同一网络中。
+
+服务启动时配置
+
++ `--bip=CIDR` ip地址加掩码 例如 ： 192.168.1.2/24
++ `--mtu=BYTES` 允许最大传输单元 默认 1500Bytes
+
+也可以在配置文件中 修改 `DOCKER_OPTS`再重启
+
+```shell
+sudo brctl show # 查看网桥端口信息  DEbian 系中需要 sudo apt-get install bridger-utils 
+```
+
+### 1.8.5 自定义网桥
+
+除了 默认 docker0 网桥，还可以自定义。
+
+docker 服务启动时，使用 `-d BRIDGE `或者 `--bridge=BRIDGE` 指定使用我网桥。
+
+如果 服务已经启动，需要 停止服务。
+
+```shell
+systemctl stop docker # 停止服务
+ip link set dev docker0 down # 卸载docker0
+brctl delbr docker0 # 删除docker0
+```
+
+创建 新网桥
+
+```shell
+brctl addbr bridger_names
+ip addr add 192.168.10.1/24 dve bridger_names # 设置网桥的 IP段
+ip link set dev bridger_names up # 启用
+
+# 查看网桥
+ip addr show bridger_names
+```
+
+docker 配置文件中， `/etc/docker/deamon.json`配置 docker 启动的默认网桥
+
+```json
+{
+    "bridge":"bridger_names"
+}
+```
