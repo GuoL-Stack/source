@@ -1,0 +1,18 @@
+sudo yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-selinux docker-engine-selinux docker-engine
+
+
+
+sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+sudo yum makecache fast 
+sudo yum install docker-ce
+
+curl -fsSL get.docker.com -o get-docker.sh 
+sudo sh get-docker.sh --mirror Aliyun
+
+
+docker run -e yU?LZ**heihei -p 12345:8388 -p12345:8388/udp -d shadowsocks/shadowsocks-libev
+aes-256-gcm
+
+docker run -dt --name ssserver -p 12345:6443 -p 12344:6500/udp mritd/shadowsocks -m "ss-server" -s "-s 0.0.0.0 -p 6443 -m chacha20-ietf-poly1305 -k yU?LZ**heihei" -x -e "kcpserver" -k "-t 127.0.0.1:6443 -l :6500 -mode fast2"
+
+docker run -d --name shadowsocks  -p 12345:8388  -p 12345:8388/udp -e PASSWORD=yU?LZ**heihei -e METHOD=aes-128-gcm gists/shadowsocks-libev
