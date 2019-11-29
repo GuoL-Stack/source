@@ -249,3 +249,10 @@ https://sdkman.io/install
 openJDK 
 https://developers.redhat.com/products/openjdk/download
 https://adoptopenjdk.net/releases.html?variant=openjdk11&jvmVariant=hotspot
+
+spring cloud 资源
+Cloud-Platform
+
+spring boot 资源
+spring-boot-plus
+spring-boot-pay
