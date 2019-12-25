@@ -139,6 +139,13 @@ https://www.centos.net.cn/archive/5879
 Java 网络服务框架 Netty 4.1.33
 https://netty.io/
 http://ifeve.com/netty-2-6/
+https://www.jianshu.com/p/a4e03835921a
+
+网络通信框架：netty、mina、grizzly
+
+web容器：tomcat、jetty
+
+web服务器：apache、nginx
 
 三大开源web 容器 服务器 ： Tomcat JBoss jetty
 JBoss
