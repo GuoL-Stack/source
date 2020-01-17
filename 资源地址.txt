@@ -126,6 +126,7 @@ https://segmentfault.com/a/1190000010366749
 
 docker 国内镜像
 https://www.docker-cn.com/registry-mirror
+https://gitee.com/itmuch/docker-book.git
 
 docker for maven
 https://zhuanlan.zhihu.com/p/90122357
